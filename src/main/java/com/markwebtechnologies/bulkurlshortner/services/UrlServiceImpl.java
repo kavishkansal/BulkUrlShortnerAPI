@@ -39,10 +39,6 @@ public class UrlServiceImpl implements UrlService{
         httpHeaders.add("Authorization","Bearer 90117d57412bda840fc81ae3c6baa10c");
         HttpEntity<String> httpEntity = new HttpEntity<String>("parameters",httpHeaders);
         UrlDto responseEntity = restTemplate.getForObject(genericUrlLinks,UrlDto.class,httpEntity);
-        List<Url> urlList = new LinkedList<>();
-//        for(UrlDto urlDto: getDatafromAPI(responseEntity.getBody())){
-//            urlList.add(getUrlFromUrlDto(urlDto));
-//        }
         return getUrlFromUrlDto(responseEntity);
     }
 
@@ -67,20 +63,6 @@ public class UrlServiceImpl implements UrlService{
         return getUrlFromUrlDto(responseEntity.getBody().getData());
     }
 
-//    @Override
-//    public List<Url> getAllUrls() {
-//        RestTemplate restTemplate = restTemplateBuilder.build();
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.add("Authorization","Bearer 90117d57412bda840fc81ae3c6baa10c");
-//        HttpEntity<String> httpEntity = new HttpEntity<String>("parameters",httpHeaders);
-//        ResponseEntity<String> responseEntity = restTemplate.exchange(genericUrlLinks, HttpMethod.GET, httpEntity, String.class);
-//        List<Url> urlList = new LinkedList<>();
-////        for(UrlDto urlDto: responseEntity.getBody()){
-////            urlList.add(getUrlFromUrlDto(urlDto));
-////        }
-//        return urlList;
-//
-//    }
 
     @Override
     public List<Url> getAllUrls() {
@@ -121,9 +103,6 @@ public class UrlServiceImpl implements UrlService{
 
     }
 
-    private void getUrlDtoFromArray(){
-
-    }
     private Url getUrlFromUrlDto(UrlDto urlDto){
         Url url = new Url();
         url.setId(urlDto.getId());
